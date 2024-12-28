@@ -26,9 +26,10 @@ import shopify from "./company/tesla.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/shopify.png";
 
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
+import carrent from "./current.png";
+import jobit from "./repairshop.png";
 import tripguide from "./tripguide.png";
+import amassowner from "./amassowner.jpg"
 
 export {
   logo,
@@ -59,4 +60,5 @@ export {
   carrent,
   jobit,
   tripguide,
+  amassowner,
 };

@@ -20,6 +20,7 @@ import {
     tripguide,
     threejs,
   } from "../assets";
+  import  amassowner  from "../assets/amassowner.jpg";
   
   export const navLinks = [
    
@@ -156,35 +157,21 @@ import {
   const testimonials = [
     {
       testimonial:
-        "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-      name: "Sara Lee",
-      designation: "CFO",
-      company: "Acme Co",
-      image: "https://randomuser.me/api/portraits/women/4.jpg",
+        "I needed a website for my computer repair center to communicate with clients about laptop and computer repairs. He made me believe he could handle it, and he did! I thought it would be difficult for him, but he delivered the website quickly and exactly as I needed.",
+      name: "Deepak Paudel",
+      designation: "Owner",
+      company: "Amass Computers",
+      image: amassowner, // Use the imported image variable here
     },
-    {
-      testimonial:
-        "I've never met a web developer who truly cares about their clients' success like Rick does.",
-      name: "Chris Brown",
-      designation: "COO",
-      company: "DEF Corp",
-      image: "https://randomuser.me/api/portraits/men/5.jpg",
-    },
-    {
-      testimonial:
-        "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-      name: "Lisa Wang",
-      designation: "CTO",
-      company: "456 Enterprises",
-      image: "https://randomuser.me/api/portraits/women/6.jpg",
-    },
+ 
+  
   ];
   
   const projects = [
     {
-      name: "Car Rent",
+      name: "Fullstack Clothing Ecommerce Website",
       description:
-        "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+        "A full-stack clothing e-commerce website built using MERN (MongoDB, Express.js, React, Node.js) stack. The website features a comprehensive client-owner interaction system with WhatsApp integration. The design was customized according to specific client requirements.",
       tags: [
         {
           name: "react",
@@ -200,12 +187,12 @@ import {
         },
       ],
       image: carrent,
-      source_code_link: "https://github.com/",
+      source_code_link: "https://github.com/Aryan-986/Nep-Origins-Ecommerce",
     },
     {
-      name: "Job IT",
+      name: "Computer Servicing Website",
       description:
-        "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+        "A computer servicing website built using React and REST API for efficient service management and scheduling where owner and user can interact with whatsapp integartion.",
       tags: [
         {
           name: "react",
@@ -221,12 +208,12 @@ import {
         },
       ],
       image: jobit,
-      source_code_link: "https://github.com/",
+      source_code_link: "https://github.com/Aryan-986/ComputerServiceNepal",
     },
     {
-      name: "Trip Guide",
+      name: "Seraphic Perfuem Ecommerce Website",
       description:
-        "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+        "A luxurious perfume e-commerce website built using Next.js and Supabase. The website features a seamless user experience with a focus on product visualization and easy checkout process.",
       tags: [
         {
           name: "nextjs",
