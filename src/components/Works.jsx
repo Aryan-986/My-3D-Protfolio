@@ -6,6 +6,7 @@ import { github } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
+import bitmoji4 from "../assets/bitmoji4.png"
 
 const ProjectCard = ({
   index,
@@ -69,29 +70,41 @@ const ProjectCard = ({
 const Works = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>My work</p>
-        <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
-      </motion.div>
+    <motion.div variants={textVariant()} className="flex flex-col items-center">
+    <p className={`${styles.sectionSubText} text-white`}>My work</p> {/* Ensure text is visible */}
+    <h2 className={`${styles.sectionHeadText} text-yellow-600`}>Projects.</h2> {/* Ensure text is visible */}
+    
+    <motion.p
+        variants={fadeIn("", "", 0.1, 1)}
+        className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px] text-center'
+    >
+        Following projects showcase my skills and experience through
+        real-world examples of my work. Each project is briefly described with
+        links to code repositories and live demos in it. It reflects my
+        ability to solve complex problems, work with different technologies,
+        and manage projects effectively.
+    </motion.p>
 
-      <div className='w-full flex'>
-        <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
-          className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
-        >
-          Following projects showcases my skills and experience through
-          real-world examples of my work. Each project is briefly described with
-          links to code repositories and live demos in it. It reflects my
-          ability to solve complex problems, work with different technologies,
-          and manage projects effectively.
-        </motion.p>
-      </div>
+    <img
+        src={bitmoji4}
+        className="bitmoji"
+        alt="Bitmoji"
+        style={{
+            width: "70%",
+            maxWidth: window.innerWidth <= 567 ? "70px" : "200px", // Adjust size for mobile
+            margin: "5px auto 20px", // Center image with margin on top and bottom
+            display: "block",
+        }}
+    />
+</motion.div>
 
-      <div className='mt-20 flex flex-wrap gap-7'>
-        {projects.map((project, index) => (
-          <ProjectCard key={`project-${index}`} index={index} {...project} />
-        ))}
-      </div>
+<div className='mt-20 flex flex-wrap gap-7 justify-center'>
+    {projects.map((project, index) => (
+        <ProjectCard key={`project-${index}`} index={index} {...project} />
+    ))}
+</div>
+
+
     </>
   );
 };

@@ -29,11 +29,11 @@ import {
       title: "About",
     },
     {
-      id: "work",
+      id: "project",
       title: "Work",
     },
     {
-      id: "contact",
+      id: "Contact",
       title: "Contact",
     },
   ];

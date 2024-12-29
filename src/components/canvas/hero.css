@@ -191,7 +191,7 @@ header .content-fit nav ul{
     pointer-events: none;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 623px) {
     #banner .title {
         font-size: 5em;
     }
@@ -200,7 +200,7 @@ header .content-fit nav ul{
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 567px) {
     #banner .title {
         font-size: 3em;
     }

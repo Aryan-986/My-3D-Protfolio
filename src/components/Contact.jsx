@@ -6,6 +6,11 @@ import { styles } from "../styles"
 
 import { SectionWrapper } from "../hoc"
 import { slideIn } from "../utils/motion"
+import Earth from "./canvas/Earth"
+
+//C25rpdB5wB7XLJ8T4
+//template_6ttjq7g
+//service_qd9bdv4
 
 const Contact = () => {
   const formRef = useRef();
@@ -16,9 +21,46 @@ const Contact = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {}
+  const handleChange = (e) => {
+    const {name, value} = e.target;
 
-  const handleSubmit = (e) => {}
+    setForm({ ...form, [name]: value})
+
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    emailjs. send('service_qd9bdv4', //service key
+      'template_nzozpi5', //template key
+    {
+      from_name: form.name,
+      to_name: 'Aryan Karki',
+      from_email: form.email,
+      to_email: 'aryankarki984@gmail.com',
+      message: form.message,
+    },
+    'C25rpdB5wB7XLJ8T4' //publik key from email.js
+    )
+    .then(() => {
+      setLoading(false);
+      alert('Thank You so much. I will get back to you soon....');
+
+      setForm({
+        name:"",
+        email:"",
+        message:""
+      })
+    }, (error) => {
+      setLoading(false)
+
+      console.log(error);
+
+      alert('Something went wrong! Please recheck your details')
+    })
+
+  }
 
    return (
     <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
@@ -85,10 +127,11 @@ const Contact = () => {
       </motion.div>
 
       <motion.div
-        variants={slideIn('left', "tween", 0.2, 1)}
-        className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
+        variants={slideIn("right", "tween", 0.2, 1)}
+        className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
       >
 
+        <Earth/>
       </motion.div>
     </div>
   )

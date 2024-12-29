@@ -1,6 +1,7 @@
 import "./canvas/hero.css"; // Import the CSS file
 import Dragon from "../components/dragon.jsx"; // Import Dragon component
 import leaf1 from "../assets/leaf 1.png"; // Ensure correct path and extension
+import bitmojia from "../assets/bitmoji2.png"
 
 const BannerSection = () => {
   return (
@@ -9,6 +10,7 @@ const BannerSection = () => {
         <div className="title" data-before="WEBSITE">
           MY PORTFOLIO
         </div>
+      
       </div>
       <Dragon /> {/* Render Dragon only here */}
       <div className="dialogue" id="dialogue-animation" style={{ display: "none" }}></div>
@@ -30,18 +32,14 @@ const AnimationSection = () => {
         <div className="des">
           <div className="title">3D Animation Design for Website</div>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Voluptatibus voluptas a porro libero recusandae quae, aut ratione,
-            incidunt laborum, necessitatibus similique enim doloremque ex.
-            Laudantium obcaecati aspernatur doloremque illo beatae, maxime hic
-            itaque consequatur nisi accusantium veritatis, voluptatem ratione!
-            Placeat numquam nisi reiciendis harum quibusdam tempore eaque
-            deleniti accusantium, veniam quae eos sed, asperiores laborum
-            corporis odit mollitia consequatur adipisci? Quibusdam quis eos
-            debitis non esse blanditiis laudantium rerum odit tempora? Corrupti
-            maiores velit consequuntur cupiditate reiciendis similique
-            provident repudiandae.
+          I implement interactive 3D animations on websites using Three.js, a powerful JavaScript library for rendering 3D content.
+          The process begins with exporting 3D models in GLTF and OBJ format and importing in website also by optimizing the web performance. 
+          These models are then rendered using Three.js, where textures, lighting, and animations are applied to bring them to life.
+           By leveraging WebGL, the animations are seamlessly integrated into the browser, ensuring smooth performance and interactivity.
+           This approach allows for the creation of dynamic, engaging visuals, such as spinning objects, hover effects, or immersive 3D
+            environments, enhancing the overall user experience.
           </p>
+      
         </div>
       </div>
       {/* Do NOT render Dragon here */}
@@ -57,17 +55,15 @@ const WebDevSection = () => {
         <div className="des">
           <div className="title">WEBDEV</div>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Voluptatibus voluptas a porro libero recusandae quae, aut ratione,
-            incidunt laborum, necessitatibus similique enim doloremque ex.
-            Laudantium obcaecati aspernatur doloremque illo beatae, maxime hic
-            itaque consequatur nisi accusantium veritatis, voluptatem ratione!
-            Placeat numquam nisi reiciendis harum quibusdam tempore eaque
-            deleniti accusantium, veniam quae eos sed, asperiores laborum
-            corporis odit mollitia consequatur adipisci? Quibusdam quis eos
-            debitis non esse blanditiis laudantium rerum odit tempora? Corrupti
-            maiores velit consequuntur cupiditate reiciendis similique
-            provident repudiandae.
+          In the MERN stack to create dynamic and responsive websites. For the frontend,
+           I utilize HTML and CSS to structure and style the user interface, ensuring a visually 
+           appealing and user-friendly experience.
+            I employ the React framework to build interactive components that enhance user engagement and facilitate smooth navigation 
+            throughout the site. On the backend, I use Node.js to handle server-side logic and manage API requests efficiently. 
+            MongoDB serves as my database solution, allowing me to store and retrieve data seamlessly while providing flexibility
+             in data modeling. This combination of technologies enables me to develop robust applications that are not only functional 
+             but also scalable and maintainable. By integrating these tools effectively, I am able to deliver web solutions
+              tailored to meet user needs.
           </p>
         </div>
       </div>
@@ -89,36 +85,59 @@ const WebDevSection = () => {
 const ContactSection = () => {
   return (
     <div className="section" id="contact">
-      <div className="content-fit">
-        <div className="number">03</div>
-        <div className="des">
-          <div className="title">CONTACT</div>
-          <table>
-            <tbody>
-              <tr>
-                <td>Email</td>
-                <td>aryankarki984@gmail.com</td>
-              </tr>
-              <tr>
-                <td>Phone</td>
-                <td>+977 9867378511</td>
-              </tr>
-              <tr>
-                <td>Website</td>
-                <td>aryanjk.com</td>
-              </tr>
-              <tr>
-                <td>YouTube</td>
-                <td>@Aryan.k</td>
-              </tr>
-            </tbody>
-          </table>
-          <div className="sign">AryanDev</div>
-        </div>
-      </div>
+  <div className="content-fit">
+    <div className="number">03</div>
+    <div className="des">
+      <div className="title">About me</div>
+      <div
+  className="about-container"
+  style={{
+    display: "flex",
+    alignItems: "flex-start",
+    gap: "20px",
+    flexWrap: "wrap",
+    flexDirection: window.innerWidth <= 567 ? "column" : "row", // Change direction based on screen width
+  }}
+>
+  <p
+    className="about-text text-lg"
+    style={{
+      flex: "1",
+      textAlign: window.innerWidth <= 567 ? "center" : "left", // Center text on mobile
+    }}
+  >
+    Guy Who love to build websites and an enthusiastic learner dedicated to learn the art of technology. 
+    With a good foundation in MERN (MongoDB, Express.js, React.js, Node.js) development, I specialize in 
+    building dynamic and responsive e-commerce websites that deliver exceptional user experiences. My projects 
+    often feature essential functionalities such as user authentication, product filtering, shopping cart management,
+     secure payment gateways, and order tracking, ensuring a smooth and efficient shopping process for users
+     In addition to my e-commerce expertise, I have a keen interest in 3D graphics and animation using Three.js. This allows 
+     me to create captivating interactive experiences by animating 3D models on websites. Whether it’s showcasing products from
+      multiple angles or designing immersive backgrounds that respond to user interactions, I strive to bring a unique visual flair to my projects.
+I am always exploring new technologies and best practices to enhance my skills and deliver high-quality web solutions. My goal 
+is to blend functionality with stunning visuals, making every website not only user-friendly but also visually engaging. I am 
+excited about the future of web development and the endless possibilities it offers for creativity and innovation. Feel free to 
+modify any part of this paragraph to better reflect your personal style or specific experiences!
+  </p>
+  <p2 className="font-thin text-yellow-500">update on Dec 27, 2024</p2>
+</div>
+<img
+    src={bitmojia}
+    className="bitmoji"
+    alt="Bitmoji"
+    style={{
+      width: "100%",
+      maxWidth: window.innerWidth <= 567 ? "70px" : "200px", // Adjust size for mobile
+      margin: window.innerWidth <= 567 ? "0 0 5px auto" : "auto",
+      display: "block",
+    }}
+  />
 
-      {/* Do NOT render Dragon here */}
+      <div className="sign">AryanDev</div>
     </div>
+  </div>
+</div>
+
   );
 };
 
