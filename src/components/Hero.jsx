@@ -119,7 +119,6 @@ is to blend functionality with stunning visuals, making every website not only u
 excited about the future of web development and the endless possibilities it offers for creativity and innovation. Feel free to 
 modify any part of this paragraph to better reflect your personal style or specific experiences!
   </p>
-  <p2 className="font-thin text-yellow-500">update on Dec 27, 2024</p2>
 </div>
 <img
     src={bitmojia}

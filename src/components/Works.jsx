@@ -90,7 +90,7 @@ const Works = () => {
         className="bitmoji"
         alt="Bitmoji"
         style={{
-            width: "70%",
+            width: "100%",
             maxWidth: window.innerWidth <= 567 ? "70px" : "200px", // Adjust size for mobile
             margin: "5px auto 20px", // Center image with margin on top and bottom
             display: "block",

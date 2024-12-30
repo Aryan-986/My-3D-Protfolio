@@ -18,7 +18,7 @@ const Tech = () => {
     className="bitmoji"
     alt="Bitmoji"
     style={{
-      width: "70%",
+      width: "100%",
       maxWidth: window.innerWidth <= 567 ? "70px" : "200px", // Adjust size for mobile
       margin: window.innerWidth <= 567 ? "0 0 5px auto" : "auto",
       display: "block",
