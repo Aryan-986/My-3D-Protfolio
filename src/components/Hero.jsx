@@ -116,8 +116,7 @@ const ContactSection = () => {
       multiple angles or designing immersive backgrounds that respond to user interactions, I strive to bring a unique visual flair to my projects.
 I am always exploring new technologies and best practices to enhance my skills and deliver high-quality web solutions. My goal 
 is to blend functionality with stunning visuals, making every website not only user-friendly but also visually engaging. I am 
-excited about the future of web development and the endless possibilities it offers for creativity and innovation. Feel free to 
-modify any part of this paragraph to better reflect your personal style or specific experiences!
+excited about the future of web development and the endless possibilities it offers for creativity and innovation. 
   </p>
 </div>
 <img
