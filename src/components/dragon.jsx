@@ -8,37 +8,39 @@ const Dragon = () => {
     const sceneRef = useRef(new THREE.Scene());
     const dragonRef = useRef(null);
     const mixerRef = useRef(null);
-    const rendererRef = useRef(new THREE.WebGLRenderer({ alpha: true }));
-    const cameraRef = useRef(new THREE.PerspectiveCamera(
-        45,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        1000
-    ));
-    const actionRef = useRef(null);
-    let clock = new THREE.Clock();
+    const rendererRef = useRef(null);
+    const cameraRef = useRef(null);
+    const clock = useRef(new THREE.Clock());
 
     useEffect(() => {
-        // Camera setup
+        // Setup Camera
+        cameraRef.current = new THREE.PerspectiveCamera(
+            45,
+            window.innerWidth / window.innerHeight,
+            0.1,
+            1000
+        );
         cameraRef.current.position.z = 30;
 
-        // Renderer setup
+        // Setup Renderer
+        rendererRef.current = new THREE.WebGLRenderer({ alpha: true });
         rendererRef.current.setSize(window.innerWidth, window.innerHeight);
         containerRef.current.appendChild(rendererRef.current.domElement);
 
-        // Lighting
-        const ambientLight = new THREE.AmbientLight(0xffffff, 2); // Increased intensity
+        // Add Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 2);
         sceneRef.current.add(ambientLight);
 
-        const topLight = new THREE.DirectionalLight(0xffffff, 2); // Increased intensity
-        topLight.position.set(500, 500, 500);
-        sceneRef.current.add(topLight);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+        directionalLight.position.set(500, 500, 500);
+        sceneRef.current.add(directionalLight);
 
-        // Dragon loading
+        // Load Dragon Model
         const loader = new GLTFLoader();
-        loader.load('/dragon_flying.glb',
+        loader.load(
+            '/dragon_flying.glb',
             (gltf) => {
-                // Check if a dragon already exists
+                // Clean up existing dragon
                 if (dragonRef.current) {
                     sceneRef.current.remove(dragonRef.current);
                 }
@@ -48,39 +50,40 @@ const Dragon = () => {
                 dragonRef.current.position.set(0.8, 1, 3);
                 sceneRef.current.add(dragonRef.current);
 
-                // Darken the dragon's color
+                // Adjust material for the dragon
                 dragonRef.current.traverse((child) => {
                     if (child.isMesh) {
                         child.material.color.set(0x999999); // Dark gray color
-                        child.material.needsUpdate = true; // Ensure material updates
+                        child.material.needsUpdate = true;
                     }
                 });
 
+                // Setup Animation
                 mixerRef.current = new THREE.AnimationMixer(dragonRef.current);
-                actionRef.current = mixerRef.current.clipAction(gltf.animations[0]);
-                actionRef.current.timeScale = 1.5; // Increased speed for wing movement
-                actionRef.current.play();
-                modelMove();
+                const action = mixerRef.current.clipAction(gltf.animations[0]);
+                action.timeScale = 1.5; // Speed up the animation
+                action.play();
+
+                // Start Animating Model Movement
+                handleModelMovement();
             },
             undefined,
-            (error) => {
-                console.error('An error occurred while loading the model:', error);
-            }
+            (error) => console.error('Error loading the dragon model:', error)
         );
 
-        // Animation positions
-        const arrPositionModel = [
+        // Define Model Positions for Sections
+        const sectionPositions = [
             { id: 'banner', position: { x: 1, y: -5, z: 0 }, rotation: { x: 0.3, y: -0.5, z: 0 } },
-            { id: "intro", position: { x: 1, y: -5, z: -5 }, rotation: { x: 0.5, y: -0.5, z: 0 } },
-            { id: "description", position: { x: -1, y: -5, z: -5 }, rotation: { x: 0, y: 0.5, z: 0 } },
-            { id: "contact", position: { x: 0.4, y: -7, z: -5 }, rotation: { x: 0.3, y: -0.5, z: 0 } },
+            { id: 'intro', position: { x: 1, y: -5, z: -5 }, rotation: { x: 0.5, y: -0.5, z: 0 } },
+            { id: 'description', position: { x: -1, y: -5, z: -5 }, rotation: { x: 0, y: 0.5, z: 0 } },
+            { id: 'contact', position: { x: 0.4, y: -7, z: -5 }, rotation: { x: 0.3, y: -0.5, z: 0 } },
         ];
 
-        const modelMove = () => {
+        const handleModelMovement = () => {
             if (!dragonRef.current) return;
 
             const sections = document.querySelectorAll('.section');
-            let currentSection;
+            let currentSection = null;
 
             sections.forEach((section) => {
                 const rect = section.getBoundingClientRect();
@@ -89,42 +92,43 @@ const Dragon = () => {
                 }
             });
 
-            const position_active = arrPositionModel.findIndex((val) => val.id === currentSection);
+            const activePosition = sectionPositions.find((pos) => pos.id === currentSection);
 
-            if (currentSection == "contact"){
+            if (currentSection === 'contact') {
                 dragonRef.current.scale.set(0, 0, 0);
                 return;
-            } else if (position_active >= 0) {
-                dragonRef.current.scale.set(0.05, 0.05, 0.04);
-                const new_coordinates = arrPositionModel[position_active];
-                gsap.to(dragonRef.current.position, {
-                    ...new_coordinates.position,
-                    duration: 3,
-                    ease: "power1.out"
-                });
+            }
 
-                gsap.to(dragonRef.current.rotation, {
-                    ...new_coordinates.rotation,
+            if (activePosition) {
+                dragonRef.current.scale.set(0.05, 0.05, 0.04);
+
+                // Animate position and rotation
+                gsap.to(dragonRef.current.position, {
+                    ...activePosition.position,
                     duration: 3,
-                    ease: "power1.out"
+                    ease: 'power1.out',
+                });
+                gsap.to(dragonRef.current.rotation, {
+                    ...activePosition.rotation,
+                    duration: 3,
+                    ease: 'power1.out',
                 });
             }
         };
 
-        // Animation loop
+        // Animation Loop
         const animate = () => {
             requestAnimationFrame(animate);
-            const deltaTime = clock.getDelta();
+            const delta = clock.current.getDelta();
             if (mixerRef.current) {
-                mixerRef.current.update(deltaTime);
+                mixerRef.current.update(delta);
             }
             rendererRef.current.render(sceneRef.current, cameraRef.current);
         };
         animate();
 
-        // Event listeners
-        const handleScroll = () => modelMove();
-        
+        // Event Listeners
+        const handleScroll = () => handleModelMovement();
         const handleResize = () => {
             cameraRef.current.aspect = window.innerWidth / window.innerHeight;
             cameraRef.current.updateProjectionMatrix();
@@ -138,18 +142,23 @@ const Dragon = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleResize);
-            
-            // Remove dragon from scene on cleanup
+
+            // Remove Dragon from Scene
             if (dragonRef.current) {
                 sceneRef.current.remove(dragonRef.current);
-                dragonRef.current.geometry.dispose(); // Dispose geometry if necessary
-                dragonRef.current.material.dispose(); // Dispose material if necessary
+                dragonRef.current.traverse((child) => {
+                    if (child.isMesh) {
+                        child.geometry.dispose();
+                        child.material.dispose();
+                    }
+                });
             }
 
-            if (containerRef.current && rendererRef.current) {
+            // Remove Renderer
+            if (rendererRef.current) {
                 containerRef.current.removeChild(rendererRef.current.domElement);
             }
-            
+
             if (mixerRef.current) {
                 mixerRef.current.stopAllAction();
             }
