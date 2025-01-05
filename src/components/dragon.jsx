@@ -73,7 +73,7 @@ const Dragon = () => {
 
         // Define Model Positions for Sections
         const sectionPositions = [
-            { id: 'banner', position: { x: 1, y: -5, z: 0 }, rotation: { x: 0.3, y: -0.5, z: 0 } },
+            { id: 'banner', position: { x: 1, y: -5, z: 0 }, rotation: { x: 0.3, y: -0.5, z: 0 } },            
             { id: 'intro', position: { x: 1, y: -5, z: -5 }, rotation: { x: 0.5, y: -0.5, z: 0 } },
             { id: 'description', position: { x: -1, y: -5, z: -5 }, rotation: { x: 0, y: 0.5, z: 0 } },
             { id: 'contact', position: { x: 0.4, y: -7, z: -5 }, rotation: { x: 0.3, y: -0.5, z: 0 } },

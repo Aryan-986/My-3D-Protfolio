@@ -1,3 +1,4 @@
+
 @import url('https://fonts.cdnfonts.com/css/devil-breeze');
 @import url('https://fonts.cdnfonts.com/css/poppins');
 @import url('https://fonts.cdnfonts.com/css/bimbo');
@@ -35,6 +36,15 @@ body {
     align-items: center;
 }
 
+.section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
 .content-fit {
     width: min(1200px, 90vw);
     margin: auto;
@@ -42,6 +52,113 @@ body {
     position: relative;
     padding-block: 10em;
 }
+
+.content-fit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+    gap: 1rem;
+  }
+
+  .left-side, .right-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .namaste-section {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+
+  .title[data-before="namaskar"]::before {
+    content: attr(data-before);
+    position: absolute;
+    top: -0.5em;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.4em;
+    opacity: 0.7;
+  }
+
+
+.namaste-text {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.wave {
+    animation: wave 2s infinite;
+    display: inline-block;
+  }
+
+  .online-title, .offline-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .bitmoji-image, .real-image {
+    max-width: 300px;
+    height: auto;
+    margin: 0.5rem 0;
+    transition: transform 0.3s ease;
+  }
+
+  .bitmoji-image:hover, .real-image:hover {
+    transform: scale(1.05);
+  }
+  
+  .dialogue {
+    position: absolute;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  @keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-20deg); }
+    75% { transform: rotate(20deg); }
+  }
+  
+  @media (max-width: 768px) {
+    .content-fit {
+      flex-direction: column;
+      padding: 2rem;
+    }
+  
+    .title {
+      font-size: 2rem;
+    }
+  
+    .namaste-text {
+      font-size: 1.25rem;
+    }
+  
+    .bitmoji-image, .real-image {
+      max-width: 250px;
+    }
+  }
+
+
 
 header {
     padding-block: 1em;
@@ -59,7 +176,7 @@ header {
 
 header .content-fit {
     display: flex;
-    justify-content: space-between;
+    justify-content: ;
     align-items: center;
     min-height: unset!important;
     padding-block: unset!important;
@@ -74,6 +191,8 @@ header .content-fit nav ul{
     position: relative;
     z-index: 1;
 }
+
+
 
 #banner .title {
     color: #d1ff48;
@@ -99,19 +218,7 @@ header .content-fit nav ul{
     z-index: 1;
 }
 
-#banner .decorate.volcano {
-    width: 50vw;
-    bottom: -20%;
-    right: 0;
-    transform: translateY(20%);
-}
 
-#banner .decorate.leaf {
-    width: 30vw;
-    bottom: -30%;
-    left: 0;
-    transform: translateY(10%);
-}
 
 #intro .content-fit {
     display: flex;

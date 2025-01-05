@@ -15,7 +15,7 @@ const Home = () => {
       </div>
   
       <div>
-        <h1 className={`${styles.heroHeadText} text-blue-800`}>
+        <h1 className={`${styles.heroHeadText}`}>
           Hello, It's Me <span className="text-yellow-600">Aryan</span>
         </h1>
         <p className={`${styles.heroSubText} mt-2 text-white-100`}>

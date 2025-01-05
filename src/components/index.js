@@ -8,12 +8,18 @@ import Works from './Works';
 import Feedbacks from './Feedbacks';
 import Contact from './Contact';
 import Home from './home';
+import Music from './music';
+import Head from './Head';
+import Media from './media';
 
 export {
   Hero,
+  Head,
   Navbar,
   Home,
+ Media,
   About,
+  Music,
   Tech,
   Experience,
   Works,

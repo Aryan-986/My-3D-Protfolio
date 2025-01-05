@@ -1,6 +1,23 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 
-import {Home, About, Contact, Experience, Feedbacks,Hero, Navbar, Works, StarsCanvas, Tech,} from './components'
+import {
+  Home,
+  About,
+  Contact,
+  Experience,
+  Feedbacks,
+  Hero,
+  Navbar,
+  Works,
+  StarsCanvas,
+  Tech,
+  Music,
+  Head,
+  Media,
+ 
+  
+} from './components';
+
 
 
 
@@ -18,11 +35,16 @@ const App = () => {
     <div className="bg-hero-pattern bg-cover
     bg-no-repeat bg-center">
       <Navbar/>
-      <Hero/>
-   
+      
+      <Home/>
+      <Head/>
+      <Media/>
 
       </div>
-      <Home/>
+      <Music />
+      <Hero/>
+     
+      
       <About/>
       <Experience/>
       <Tech/>
@@ -38,3 +60,7 @@ const App = () => {
 }
 
 export default App
+
+
+
+
